@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BookManagerApp.DataAccessLayer;
+using BookManagerApp.ViewModels;
 
 namespace BookManagerApp.Views
 {
@@ -22,6 +24,16 @@ namespace BookManagerApp.Views
         public Login()
         {
             InitializeComponent();
+            var loginViewModel = new LoginViewModel();
+            DataContext = loginViewModel;
+        }
+
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is LoginViewModel vm)
+            {
+                vm.Password = PasswordBox.Password;
+            }
         }
     }
 }
