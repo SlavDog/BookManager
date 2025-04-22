@@ -15,7 +15,7 @@ namespace BookManagerApp.ViewModels
     {
         public string Title { get; set; }
         public string Author { get; set; }
-        public DateTime FinishDate { get; set; }
+        public DateTime FinishDate { get; set; } = DateTime.Now;
         public float Rating { get; set; }
         public string Bookshelf { get; set; }
         public string Genre { get; set; }
