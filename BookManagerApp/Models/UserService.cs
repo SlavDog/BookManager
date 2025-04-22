@@ -31,6 +31,13 @@ namespace BookManagerApp.Models
             return 0;
         }
 
+        public static async Task<User> GetUser(string username)
+        {
+            using var context = new AppDbContext();
+            var user = await context.Users
+                .Include(u => u.Books)
+                .FirstOrDefaultAsync(u => u.Username == username);
+            return user;
         }
 
         public static async Task<bool> CheckCredentialsUser(string? username, string? password)
