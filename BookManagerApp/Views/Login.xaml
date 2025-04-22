@@ -5,27 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BookManagerApp.Views"
         mc:Ignorable="d"
-        Title="Login" Height="450" Width="800">
-    <Grid Background="#FF200E2F">
-        <Label Content="Book Manager" HorizontalAlignment="Center" Margin="0,0,0,138" VerticalAlignment="Center" Foreground="White" FontSize="24" FontFamily="Segoe UI Semibold"/>
-        <TextBox Text="{Binding Username}" Padding="4" HorizontalAlignment="Center" Margin="0,0,0,60" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Background="#FF3F2951" Foreground="White" BorderBrush="#00000000" SelectionBrush="White" Height="25" Cursor="IBeam" SelectionTextBrush="White"/>
-        <PasswordBox x:Name="PasswordBox" PasswordChanged="PasswordBox_PasswordChanged" Padding="4" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Width="120" Background="#FF3F2951" Foreground="White" BorderBrush="#00000000" SelectionBrush="White" Height="25" Cursor="IBeam"/>
-        <Button Command="{Binding LoginCommand}" Padding="4" Content="Login" HorizontalAlignment="Center" Margin="0,80,0,0" VerticalAlignment="Center" Width="120" FontFamily="Segoe UI Variable Small Semilight" Cursor="Hand">
+        Title="Login" Height="450" Width="800" Name="LoginWindow">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="-0.5,-0.5" StartPoint="0.5,0.5">
+                <GradientStop Color="#FFF3DDC0"/>
+                <GradientStop Color="#FFDAB3DC" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Label Content="-- Book Manager --" HorizontalAlignment="Center" Margin="0,0,0,138" VerticalAlignment="Center" Foreground="#FF232323" FontSize="24" FontFamily="Segoe UI Semibold" Cursor=""/>
+        <TextBox Text="{Binding Username}" Padding="4" HorizontalAlignment="Center" TextWrapping="NoWrap" VerticalAlignment="Center" Width="120" Background="#FFF0F0F0" Foreground="#FF232323" Height="25" Cursor="IBeam" Margin="0,0,0,60" BorderBrush="#FFFFAF41"/>
+        <PasswordBox x:Name="PasswordBox" PasswordChanged="PasswordBox_PasswordChanged" Padding="4" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" Background="#FFF0F0F0" Foreground="#FF232323" Height="25" Cursor="IBeam" BorderBrush="#FFFFAF41"/>
+        <Button Command="{Binding LoginCommand}" CommandParameter="{x:Reference Name=LoginWindow}" Padding="4" Content="Login" HorizontalAlignment="Center" Margin="0,80,0,0" VerticalAlignment="Center" Width="120" FontFamily="Segoe UI Variable Small Semilight" Cursor="Hand" BorderBrush="{x:Null}">
             <Button.Background>
-                <LinearGradientBrush EndPoint="-0.5,1" StartPoint="0.5,-1">
-                    <GradientStop Color="#FFFAC4FF" Offset="0.003"/>
-                    <GradientStop Color="#FF20F9DA" Offset="1"/>
+                <LinearGradientBrush EndPoint="-1,0" StartPoint="1,0">
+                    <GradientStop Color="#FFFC00FF" Offset="0"/>
+                    <GradientStop Color="#FFFFAF41" Offset="0.6"/>
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button Command="{Binding RegisterCommand}" Padding="4" Content="Register" HorizontalAlignment="Center" Margin="0,150,0,0" VerticalAlignment="Center" Width="120" FontFamily="Segoe UI Variable Small Semilight" Cursor="Hand">
+        <Button Command="{Binding RegisterCommand}" Padding="4" Content="Register" HorizontalAlignment="Center" Margin="0,150,0,0" VerticalAlignment="Center" Width="120" FontFamily="Segoe UI Variable Small Semilight" Cursor="Hand" BorderBrush="{x:Null}">
             <Button.Background>
-                <LinearGradientBrush EndPoint="-0.5,1" StartPoint="0.5,-1">
-                    <GradientStop Color="#FFFAC4FF" Offset="0.003"/>
-                    <GradientStop Color="#FF20F9DA" Offset="1"/>
+                <LinearGradientBrush EndPoint="-1,0" StartPoint="1,0">
+                    <GradientStop Color="#FFFC00FF" Offset="0"/>
+                    <GradientStop Color="#FFFFAF41" Offset="0.6"/>
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Label Content="{Binding InfoText}" HorizontalAlignment="Center" Margin="0,230,0,0" VerticalAlignment="cENTER" Foreground="White"/>
+        <Label Content="{Binding InfoText}" HorizontalAlignment="Center" Margin="0,230,0,0" VerticalAlignment="Center" Foreground="#FF232323"/>
     </Grid>
 </Window>
