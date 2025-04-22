@@ -1,0 +1,80 @@
+﻿<Window x:Class="BookManagerApp.Views.BooksOverview"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BookManagerApp.Views"
+        mc:Ignorable="d"
+        Title="BooksOverview" Height="450" Width="800" Name="BookOverviewWindow">
+
+    <Grid Grid.Row="0" Grid.Column="0">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="-0.5,-0.5" StartPoint="0.5,0.5">
+                <GradientStop Color="#FFF3DDC0"/>
+                <GradientStop Color="#FFDAB3DC" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="4*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
+        
+            <Grid Background="#7FE5E5E5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" FontStyle ="Italic" Foreground="#FF232323" VerticalAlignment="Bottom" HorizontalAlignment="Center">Welcome,</Label>
+            <Label Grid.Row="1" FontStyle ="Italic" Foreground="#FF232323" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Content="{Binding User.Username}"/>
+            <Label Grid.Row="2" FontStyle ="Italic" Foreground="#FF232323"  VerticalAlignment="Top" HorizontalAlignment="Center">glad to see you again!</Label>
+        </Grid>
+        <DataGrid ItemsSource="{Binding User.Books}" AutoGenerateColumns="True" Grid.Row="1" Grid.Column="1" Background="#7FE5E5E5" VerticalAlignment="Stretch"/>
+        <StackPanel Orientation="Horizontal"  Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
+            <Label Foreground="#FF232323" FontSize="16" Margin="5">Search:</Label>
+            <TextBox Padding="4" Margin="10 0 0 0" TextWrapping="Wrap" VerticalAlignment="Center" Width="200" Background="#FFF0F0F0" Foreground="#FF232323" BorderBrush="#FFFCB969" SelectionBrush="#FF232323" Height="25" Cursor="IBeam" SelectionTextBrush="#FF232323"></TextBox>
+            <Button Background="#FFFCB969" Command="{Binding OpenAddBookCommand}" CommandParameter="{x:Reference Name=BookOverviewWindow}" Padding="4" Content="Add" HorizontalAlignment="Center" Margin="20,0,0,0" VerticalAlignment="Center" Width="50" FontFamily="Segoe UI Variable Small Semilight" Cursor="Hand" BorderBrush="{x:Null}"/>
+            <Button Background="#FFFCB969" Padding="4" Content="Remove" HorizontalAlignment="Center" Margin="20,0,0,0" VerticalAlignment="Center" Width="60" FontFamily="Segoe UI Variable Small Semilight" Cursor="Hand" BorderBrush="{x:Null}"/>
+            <Button Background="#FFFCB969" Padding="4" Content="Edit" HorizontalAlignment="Center" Margin="20,0,0,0" VerticalAlignment="Center" Width="50" FontFamily="Segoe UI Variable Small Semilight" Cursor="Hand" BorderBrush="{x:Null}"/>
+        </StackPanel>
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="6*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="6*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="6*"/>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Foreground="#FF232323" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="11">Import books from CSV:</Label>
+            <Button Background="#FFFCB969" Grid.Column="0" Grid.Row="1" Padding="4" Content="Add" HorizontalAlignment="Center" Margin="0 0 0 0" VerticalAlignment="Center" Width="50" FontFamily="Segoe UI Variable Small Semilight" Cursor="Hand" BorderBrush="{x:Null}"/>
+            <Button Background="#FFFCB969" Grid.Column="1" Grid.Row="1" Padding="4" Content="Replace" HorizontalAlignment="Center" Margin="0 0 0 0" VerticalAlignment="Center" Width="60" FontFamily="Segoe UI Variable Small Semilight" Cursor="Hand" BorderBrush="{x:Null}"/>
+            <Label Content="[Result]" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FF232323"/>
+            <Rectangle Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Fill="#FFA3A3A3" HorizontalAlignment="Stretch"/>
+            <Label Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" Foreground="#FF232323" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="11">Export books into CSV:</Label>
+            <Button Background="#FFFCB969" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" Padding="4" Content="Export" HorizontalAlignment="Center" Margin="0 0 0 0" VerticalAlignment="Center" Width="50" FontFamily="Segoe UI Variable Small Semilight" Cursor="Hand" BorderBrush="{x:Null}"/>
+            <Label Content="[Result]" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FF232323"/>
+            <Rectangle Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="2" Fill="#FFA3A3A3" HorizontalAlignment="Stretch"/>
+            <Label Grid.Column="0" Grid.Row="8" Grid.ColumnSpan="2" Foreground="#FF232323" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold">Show reading stats:</Label>
+            <Button Background="#FFFCB969" Grid.Column="0" Grid.Row="9" Padding="4" Content="Months" HorizontalAlignment="Center" Margin="0 0 0 0" VerticalAlignment="Center" Width="60" FontFamily="Segoe UI Variable Small Semilight" Cursor="Hand" BorderBrush="{x:Null}"/>
+            <Button Background="#FFFCB969" Grid.Column="1" Grid.Row="9" Padding="4" Content="Years" HorizontalAlignment="Center" Margin="0 0 0 0" VerticalAlignment="Center" Width="60" FontFamily="Segoe UI Variable Small Semilight" Cursor="Hand" BorderBrush="{x:Null}"/>
+            <Label Content="[Result]" Grid.Column="0" Grid.Row="10" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FF232323"/>
+        </Grid>
+    </Grid>
+</Window>

@@ -2,6 +2,9 @@
 using BookManagerApp.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using System.Collections.ObjectModel;
+using BookManagerApp.Views;
+using System.Windows;
 
 namespace BookManagerApp.ViewModels
 {
@@ -10,6 +13,8 @@ namespace BookManagerApp.ViewModels
     {
         public string? Username { get; set; }
         public string? Password { get; set; }
+        private BooksOverview booksOverviewWindow;
+        public ObservableCollection<Book> Books { get; set; }
 
         [ObservableProperty]
         private string? infoText = "Please enter your credentials to log in or register a new account.";
@@ -17,8 +22,19 @@ namespace BookManagerApp.ViewModels
         [RelayCommand]
         private async Task Register(object obj)
         {
-            bool success = await UserService.AddUser(Username, Password);
-            InfoText = success ? "User successfully registered!" : "This user already exists!";
+            int result = await UserService.AddUser(Username, Password);
+            switch (result)
+            {
+                case 0:
+                    InfoText = "User successfully registered!";
+                    break;
+                case -1:
+                    InfoText = "User already exists!";
+                    break;
+                case -2:
+                    InfoText = "Username or password cannot be empty!";
+                    break;
+            }
         }
 
         [RelayCommand]
@@ -26,6 +42,14 @@ namespace BookManagerApp.ViewModels
         {
             bool success = await UserService.CheckCredentialsUser(Username, Password);
             InfoText = success ? "Correct! Welcome master!" : "Wrong! You shall not pass!";
+            if (success)
+            {
+                var user = await UserService.GetUser(Username);
+                booksOverviewWindow = new BooksOverview(user);
+                var loginWindow = obj as Login;
+                booksOverviewWindow.Show();
+                loginWindow.Close();
+            }
         }
     }
 }
