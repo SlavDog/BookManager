@@ -11,6 +11,7 @@ namespace BookManagerApp.DataAccessLayer
 {
     public class User
     {
+        public User() { }
         public User(string username, string passwordHash, string salt)
         {
             Username = username;

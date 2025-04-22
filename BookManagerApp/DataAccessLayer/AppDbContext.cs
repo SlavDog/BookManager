@@ -22,7 +22,6 @@ namespace BookManagerApp.DataAccessLayer
             Database.EnsureCreated();
         }
 
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(connectionString);
