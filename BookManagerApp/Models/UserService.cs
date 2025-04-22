@@ -12,27 +12,31 @@ namespace BookManagerApp.Models
 {
     class UserService
     {
-        public static async Task<bool> AddUser(string? username, string? password)
+        public static async Task<int> AddUser(string? username, string? password)
         {
-            if (username == null || password == null) 
+            if (username == null || password == null 
+                || username == "" || password == "") 
             {
-                return false;
+                return -2;
             }
             using var context = new AppDbContext();
             var user = await context.Users.FirstOrDefaultAsync(u => u.Username == username);
             if (user != null)
             {
-                return false;
+                return -1;
             }
             string salt = GenerateSalt();
-            await context.Users.AddAsync(new DataAccessLayer.User(username, HashPassword(password, salt), salt));
+            await context.Users.AddAsync(new User(username, HashPassword(password, salt), salt));
             await context.SaveChangesAsync();
-            return true;
+            return 0;
+        }
+
         }
 
         public static async Task<bool> CheckCredentialsUser(string? username, string? password)
         {
-            if (username == null || password == null)
+            if (username == null || password == null
+                || username == "" || password == "")
             {
                 return false;
             }
