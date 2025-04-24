@@ -26,7 +26,7 @@ namespace BookManagerApp.Models
                 return -1;
             }
             string salt = GenerateSalt();
-            await context.Users.AddAsync(new User(username, HashPassword(password, salt), salt));
+            context.Users.Add(new User(username, HashPassword(password, salt), salt));
             await context.SaveChangesAsync();
             return 0;
         }
