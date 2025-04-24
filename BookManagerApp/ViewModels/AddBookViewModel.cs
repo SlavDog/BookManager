@@ -30,14 +30,15 @@ namespace BookManagerApp.ViewModels
         private DateTime? finishDate;
 
         [ObservableProperty]
-        private float? rating = 0;
+        private int? rating = 0;
 
         [ObservableProperty]
         [NotifyCanExecuteChangedFor(nameof(AddBookCommand))]
         private string? bookshelf;
 
         [ObservableProperty]
-        private string? genre;
+        [NotifyCanExecuteChangedFor(nameof(AddBookCommand))]
+        private string? genre = "Unknown";
 
         [ObservableProperty]
         private string showText = "";
@@ -58,7 +59,7 @@ namespace BookManagerApp.ViewModels
                 Author = "";
                 FinishDate = null;
                 Rating = 0;
-                Genre = null;
+                Genre = "Unknown";
                 Bookshelf = null;
                 ShowText = "";
             }
