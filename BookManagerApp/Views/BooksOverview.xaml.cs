@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BookManagerApp.DataAccessLayer;
+using BookManagerApp.Models;
+using System.Globalization;
 
 namespace BookManagerApp.Views
 {
@@ -26,6 +28,15 @@ namespace BookManagerApp.Views
             InitializeComponent();
             var booksOverviewViewModel = new BooksOverviewViewModel(user);
             DataContext = booksOverviewViewModel;
+        }
+
+        private void BooksGrid_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
+        {
+            if (DataContext is BooksOverviewViewModel vm && e.EditAction == DataGridEditAction.Commit)
+            {
+                vm.HasChanged = false;
+                vm.HasChanged = true;
+            }
         }
     }
 }
