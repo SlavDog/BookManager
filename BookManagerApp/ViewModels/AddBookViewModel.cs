@@ -8,23 +8,70 @@ using System.Text;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.Input;
 using BookManagerApp.Views;
+using BookManagerApp.Models;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Windows.Controls;
+using CommunityToolkit.Mvvm.ComponentModel;
+using System.Diagnostics;
 
 namespace BookManagerApp.ViewModels
 {
-    partial class AddBookViewModel(User user)
+    public partial class AddBookViewModel(User user, BooksOverviewViewModel parentView) : ObservableObject
     {
-        public string Title { get; set; }
-        public string Author { get; set; }
-        public DateTime FinishDate { get; set; } = DateTime.Now;
-        public float Rating { get; set; }
-        public string Bookshelf { get; set; }
-        public string Genre { get; set; }
-        public User Owner { get; set; } = user;
+        [ObservableProperty]
+        [NotifyCanExecuteChangedFor(nameof(AddBookCommand))]
+        private string? title;
 
-        [RelayCommand]
-        public void AddNewBook()
+        [ObservableProperty]
+        [NotifyCanExecuteChangedFor(nameof(AddBookCommand))]
+        public string? author;
+
+        [ObservableProperty]
+        private DateTime? finishDate;
+
+        [ObservableProperty]
+        private float? rating = 0;
+
+        [ObservableProperty]
+        [NotifyCanExecuteChangedFor(nameof(AddBookCommand))]
+        private string? bookshelf;
+
+        [ObservableProperty]
+        private string? genre;
+
+        [ObservableProperty]
+        private string showText = "";
+
+        public string[] Genres { get; } = ComboBoxValues.Genres;
+
+        public string[] Bookshelves { get;  } = ComboBoxValues.Bookshelves;
+
+        [RelayCommand(CanExecute = nameof(CanAddBook))]
+        public async Task AddBook()
         {
-            // TODO
+            Debug.Assert(Author != null && Title != null && Bookshelf != null && user != null);
+            bool success = await BookManager.AddNewBook(new Book(Author, Title, Bookshelf, user, Rating, FinishDate, Genre));
+            if (success)
+            {
+                await parentView.ReloadUser();
+                Title = "";
+                Author = "";
+                FinishDate = null;
+                Rating = 0;
+                Genre = null;
+                Bookshelf = null;
+                ShowText = "";
+            }
+            else
+            {
+                ShowText = "A book with this name already exists!";
+            }
+        }
+
+        public bool CanAddBook()
+        {
+            return (!string.IsNullOrEmpty(Title) && !string.IsNullOrEmpty(Author)
+                && !string.IsNullOrEmpty(Bookshelf));
         }
     }
 }

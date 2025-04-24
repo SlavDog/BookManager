@@ -21,10 +21,10 @@ namespace BookManagerApp.Views
     /// </summary>
     public partial class AddBook : Window
     {
-        public AddBook(User user)
+        public AddBook(User user, BooksOverviewViewModel parentView)
         {
             InitializeComponent();
-            var addBookViewModel = new AddBookViewModel(user);
+            var addBookViewModel = new AddBookViewModel(user, parentView);
             DataContext = addBookViewModel;
         }
     }
