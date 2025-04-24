@@ -40,5 +40,6 @@
             </Button.Background>
         </Button>
         <oxy:PlotView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Model="{Binding PlotModel}" />
+        <Label Content="{Binding TextToShow}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24"/>
     </Grid>
 </Window>

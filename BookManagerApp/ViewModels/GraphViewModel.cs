@@ -22,6 +22,9 @@ namespace BookManagerApp.ViewModels
         [NotifyCanExecuteChangedFor(nameof(CreateMonthCommand))]
         [NotifyCanExecuteChangedFor(nameof(CreateYearCommand))]
         private bool currentlyShowingMonthGraph = true;
+
+        [ObservableProperty]
+        private string textToShow = "";
         public ICollection<Book> Books { get; set; }
         public GraphViewModel(ICollection<Book> books)
         {
@@ -54,6 +57,15 @@ namespace BookManagerApp.ViewModels
 
         private void CreateYearModel(ICollection<Book> books)
         {
+            if (!books.Any(b => b.FinishDate != null))
+            {
+                TextToShow = "There must be some books with finish date for graph to show!";
+                return;
+            }
+            else
+            {
+                TextToShow = "";
+            }
             PlotModel = new PlotModel { Title = "Yearly Statistics" };
             var barSeries = new BarSeries
             {
@@ -117,6 +129,15 @@ namespace BookManagerApp.ViewModels
 
         private void CreateMonthModel(ICollection<Book> books)
         {
+            if (!books.Any(b => b.FinishDate != null))
+            {
+                TextToShow = "There must be some books with finish date for graph to show!";
+                return;
+            }
+            else
+            {
+                TextToShow = "";
+            }
             PlotModel = new PlotModel { Title = "Monthly Statistics" };
             var barSeries = new BarSeries
             {
