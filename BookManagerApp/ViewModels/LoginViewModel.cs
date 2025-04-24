@@ -11,10 +11,11 @@ namespace BookManagerApp.ViewModels
  
     public partial class LoginViewModel : ObservableObject
     {
-        public string? Username { get; set; }
-        public string? Password { get; set; }
-        private BooksOverview booksOverviewWindow;
-        public ObservableCollection<Book> Books { get; set; }
+        [ObservableProperty]
+        private string? username;
+        [ObservableProperty]
+        private string? password;
+        private BooksOverview? booksOverviewWindow;
 
         [ObservableProperty]
         private string? infoText = "Please enter your credentials to log in or register a new account.";
