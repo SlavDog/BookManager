@@ -34,8 +34,8 @@ namespace BookManagerApp.Views
         {
             if (DataContext is BooksOverviewViewModel vm && e.EditAction == DataGridEditAction.Commit)
             {
-                vm.HasChanged = false;
-                vm.HasChanged = true;
+                vm.DataGridHasChanged = false;
+                vm.DataGridHasChanged = true;
             }
         }
     }

@@ -13,6 +13,7 @@ using CommunityToolkit.Mvvm.Input;
 using BookManagerApp.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Text.RegularExpressions;
+using Microsoft.IdentityModel.Tokens;
 
 namespace BookManagerApp.ViewModels
 {
@@ -23,7 +24,7 @@ namespace BookManagerApp.ViewModels
         
         [ObservableProperty]
         [NotifyCanExecuteChangedFor(nameof(SaveChangesCommand))]
-        private bool hasChanged = false;
+        private bool dataGridHasChanged = false;
 
         [ObservableProperty]
         private string filterString = "";
@@ -88,12 +89,12 @@ namespace BookManagerApp.ViewModels
         private async Task SaveChanges()
         {
             await BookManager.UpdateBooks(Books);
-            HasChanged = false;
+            DataGridHasChanged = false;
         }
 
         public bool CanSaveChanges()
         {
-            return HasChanged;
+            return DataGridHasChanged;
         }
 
         public void LoadBooks(ICollection<Book>? books)
