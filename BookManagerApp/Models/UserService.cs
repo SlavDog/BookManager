@@ -20,7 +20,8 @@ namespace BookManagerApp.Models
                 return -2;
             }
             using var context = new AppDbContext();
-            var user = await context.Users.FirstOrDefaultAsync(u => u.Username == username);
+            var user = await context.Users
+                .FirstOrDefaultAsync(u => u.Username == username);
             if (user != null)
             {
                 return -1;
@@ -48,7 +49,8 @@ namespace BookManagerApp.Models
                 return false;
             }
             using var context = new AppDbContext();
-            var user = await context.Users.FirstOrDefaultAsync(u => u.Username == username);
+            var user = await context.Users
+                .FirstOrDefaultAsync(u => u.Username == username);
             return (user != null && user.PasswordHash == HashPassword(password, user.Salt));
         }
 

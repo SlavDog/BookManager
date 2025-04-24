@@ -17,7 +17,8 @@ namespace BookManagerApp.Models
         public async static Task<bool> AddNewBook(Book book)
         {
             using var context = new AppDbContext();
-            var temp = await context.Books.FirstOrDefaultAsync(b => b.Title == book.Title);
+            var temp = await context.Books
+                .FirstOrDefaultAsync(b => b.Title == book.Title);
             if (temp != null)
             {
                 return false;
