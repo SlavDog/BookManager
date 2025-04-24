@@ -54,7 +54,7 @@ namespace BookManagerApp.Models
             return (user != null && user.PasswordHash == HashPassword(password, user.Salt));
         }
 
-        private static string GenerateSalt(int size = 16)
+        public static string GenerateSalt(int size = 16)
         {
             using var rng = RandomNumberGenerator.Create();
             byte[] saltBytes = new byte[size];
