@@ -20,7 +20,7 @@ namespace BookManagerApp.DataAccessLayer
             FinishDate = finishDate;
             Bookshelf = bookshelf;
             Genre = genre;
-            User = owner;
+            Username = owner.Username;
         }
         [Required]
         public string Author { get; set; }
@@ -31,7 +31,7 @@ namespace BookManagerApp.DataAccessLayer
         [Required]
         public string Bookshelf { get; set; }
         public string? Genre { get; set; }
-        [ForeignKey("User")]
+        [ForeignKey(nameof(User))]
         public string Username { get; set; }
         [Required]
         public User User { get; set; } 
