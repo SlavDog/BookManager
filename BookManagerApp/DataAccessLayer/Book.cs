@@ -12,7 +12,7 @@ namespace BookManagerApp.DataAccessLayer
     public class Book
     {
         public Book() { }
-        public Book(string author, string title, string bookshelf, User owner, int? myRating = null, DateTime? finishDate = null, string? genre = null)
+        public Book(string author, string title, string bookshelf, string owner, int? myRating = null, DateTime? finishDate = null, string? genre = null)
         {
             Author = author;
             Title = title;
@@ -20,7 +20,7 @@ namespace BookManagerApp.DataAccessLayer
             FinishDate = finishDate;
             Bookshelf = bookshelf;
             Genre = genre;
-            Username = owner.Username;
+            Username = owner;
         }
         [Required]
         public string Author { get; set; }

@@ -51,7 +51,7 @@ namespace BookManagerApp.ViewModels
         public async Task AddBook()
         {
             Debug.Assert(Author != null && Title != null && Bookshelf != null && user != null);
-            bool success = await BookManager.AddNewBook(new Book(Author, Title, Bookshelf, user, Rating, FinishDate, Genre));
+            bool success = await BookManager.AddNewBook(new Book(Author, Title, Bookshelf, user.Username, Rating, FinishDate, Genre));
             if (success)
             {
                 await parentView.ReloadUser();
