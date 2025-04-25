@@ -22,9 +22,12 @@ namespace BookManagerApp.DataAccessLayer
             Genre = genre;
             Username = owner;
         }
+
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
         [Required]
         public string Author { get; set; }
-        [Key]
         public string Title { get; set; }
         public int? MyRating { get; set; }
         public DateTime? FinishDate { get; set; }

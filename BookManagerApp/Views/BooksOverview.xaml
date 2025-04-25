@@ -75,7 +75,6 @@
         <Grid Grid.Row="1" Grid.Column="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="3*"/>
@@ -91,19 +90,18 @@
                 <RowDefinition Height="0.1*"/>
                 <RowDefinition Height="5*"/>
             </Grid.RowDefinitions>
-            <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Foreground="#FF232323" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="11">Import books from CSV:</Label>
-            <Button Background="#FFFCB969" Grid.Column="0" Grid.Row="1" Padding="4" Content="Add" HorizontalAlignment="Center" Margin="0 0 0 0" VerticalAlignment="Center" Width="50" FontFamily="Segoe UI Variable Small Semilight" Cursor="Hand" BorderBrush="{x:Null}"/>
-            <Button Background="#FFFCB969" Grid.Column="1" Grid.Row="1" Padding="4" Content="Replace" HorizontalAlignment="Center" Margin="0 0 0 0" VerticalAlignment="Center" Width="60" FontFamily="Segoe UI Variable Small Semilight" Cursor="Hand" BorderBrush="{x:Null}"/>
-            <Label Content="[Result]" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FF232323"/>
-            <Rectangle Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Fill="#FFF0B978" HorizontalAlignment="Stretch"/>
-            <Label Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" Foreground="#FF232323" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="11">Export books into CSV:</Label>
-            <Button Background="#FFFCB969" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" Padding="4" Content="Export" HorizontalAlignment="Center" Margin="0 0 0 0" VerticalAlignment="Center" Width="50" FontFamily="Segoe UI Variable Small Semilight" Cursor="Hand" BorderBrush="{x:Null}"/>
-            <Label Content="[Result]" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FF232323"/>
-            <Rectangle Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="2" Fill="#FFF0B978" HorizontalAlignment="Stretch"/>
-            <Label Grid.Column="0" Grid.Row="8" Grid.ColumnSpan="2" Foreground="#FF232323" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold">Show reading stats:</Label>
-            <Button Command="{Binding OpenGraphCommand}" CommandParameter="{x:Reference Name=BookOverviewWindow}" Background="#FFFCB969" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="9" Padding="4" Content="Open graph view" HorizontalAlignment="Center" Margin="0 0 0 0" VerticalAlignment="Center" Width="140" FontFamily="Segoe UI Variable Small Semilight" Cursor="Hand" BorderBrush="{x:Null}"/>
-            <Rectangle Grid.Column="0" Grid.Row="10" Grid.ColumnSpan="2" Fill="#FFF0B978" HorizontalAlignment="Stretch"/>
-            <Button Command="{Binding OpenHelpCommand}" CommandParameter="{x:Reference Name=BookOverviewWindow}" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="11" Padding="4" Content="Help" HorizontalAlignment="Center" Margin="4" VerticalAlignment="Center" Width="140" FontFamily="Segoe UI Variable Small Semilight" Cursor="Hand" BorderBrush="{x:Null}">
+            <Label Grid.Column="0" Grid.Row="0" Foreground="#FF232323" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="11">Import books from CSV:</Label>
+            <Button Command="{Binding ImportCommand}" Background="#FFFCB969" Grid.Column="0" Grid.Row="1" Padding="4" Content="Load CSV file" HorizontalAlignment="Center" Margin="0 0 0 0" VerticalAlignment="Center" Width="140" FontFamily="Segoe UI Variable Small Semilight" Cursor="Hand" BorderBrush="{x:Null}"/>
+            <Label Content="{Binding ImportResult}" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FF232323"/>
+            <Rectangle Grid.Column="0" Grid.Row="3" Fill="#FFF0B978" HorizontalAlignment="Stretch"/>
+            <Label Grid.Column="0" Grid.Row="4" Foreground="#FF232323" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="11">Export books into CSV:</Label>
+            <Button Command="{Binding ExportCommand}" Background="#FFFCB969" Grid.Column="0" Grid.Row="5" Padding="4" Content="Export" HorizontalAlignment="Center" Margin="0 0 0 0" VerticalAlignment="Center" Width="140" FontFamily="Segoe UI Variable Small Semilight" Cursor="Hand" BorderBrush="{x:Null}"/>
+            <Label Content="{Binding ExportResult}" Grid.Column="0" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FF232323"/>
+            <Rectangle Grid.Column="0" Grid.Row="7" Fill="#FFF0B978" HorizontalAlignment="Stretch"/>
+            <Label Grid.Column="0" Grid.Row="8" Foreground="#FF232323" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold">Show reading stats:</Label>
+            <Button Command="{Binding OpenGraphCommand}" CommandParameter="{x:Reference Name=BookOverviewWindow}" Background="#FFFCB969" Grid.Column="0" Grid.Row="9" Padding="4" Content="Open graph view" HorizontalAlignment="Center" Margin="0 0 0 0" VerticalAlignment="Center" Width="140" FontFamily="Segoe UI Variable Small Semilight" Cursor="Hand" BorderBrush="{x:Null}"/>
+            <Rectangle Grid.Column="0" Grid.Row="10" Fill="#FFF0B978" HorizontalAlignment="Stretch"/>
+            <Button Command="{Binding OpenHelpCommand}" CommandParameter="{x:Reference Name=BookOverviewWindow}" Grid.Column="0" Grid.Row="11" Padding="4" Content="Help" HorizontalAlignment="Center" Margin="4" VerticalAlignment="Center" Width="140" FontFamily="Segoe UI Variable Small Semilight" Cursor="Hand" BorderBrush="{x:Null}">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="-1,0" StartPoint="1,0">
                         <GradientStop Color="#FFFC00FF" Offset="0"/>

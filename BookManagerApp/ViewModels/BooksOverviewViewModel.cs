@@ -14,6 +14,9 @@ using BookManagerApp.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Text.RegularExpressions;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.Win32;
+using System.IO;
+using System.Diagnostics;
 
 namespace BookManagerApp.ViewModels
 {
@@ -29,6 +32,12 @@ namespace BookManagerApp.ViewModels
         [ObservableProperty]
         private string filterString = "";
 
+        [ObservableProperty]
+        private string importResult = "";
+        
+        [ObservableProperty]
+        private string exportResult = "";
+
         partial void OnFilterStringChanged(string value)
         {
             var newBooks = BookManager.GetFilteredBooks(User, value);
@@ -40,7 +49,6 @@ namespace BookManagerApp.ViewModels
             User = user;
             LoadBooks(User.Books);
         }
-
 
         public async Task ReloadUser()
         {
@@ -83,6 +91,62 @@ namespace BookManagerApp.ViewModels
         {
             await BookManager.DeleteBook(book);
             LoadBooks(User.Books);
+        }
+
+        [RelayCommand]
+        private async Task Import(string replaceBooks)
+        {
+            OpenFileDialog fileDialog = new();
+            fileDialog.DefaultExt = ".csv";
+            fileDialog.Filter = "CSV files (*.csv)|*.csv";
+            fileDialog.Title = "Load your books";
+            string downloadsFolder = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
+                "Downloads"
+            );
+            if (Directory.Exists(downloadsFolder))
+            {
+                fileDialog.InitialDirectory = downloadsFolder;
+            }
+            if (fileDialog.ShowDialog() == true)
+            {
+                string selectedFile = fileDialog.FileName;
+                try
+                {
+                    await BookManager.ImportBooksFromCSV(selectedFile, User);
+                    LoadBooks(User.Books);
+                    ImportResult = $"Successful import!";
+                    
+                }
+                catch
+                {
+                    ImportResult = $"Something went wrong.";
+                }
+            }
+        }
+
+        [RelayCommand]
+        private async Task Export(string replaceBooks)
+        {
+            SaveFileDialog fileDialog = new();
+            fileDialog.FileName = "books.csv";
+            fileDialog.DefaultExt = ".csv";
+            fileDialog.Filter = "CSV files (*.csv)|*.csv";
+            fileDialog.Title = "Save your books";
+            if (fileDialog.ShowDialog() == true)
+            {
+                string selectedFile = fileDialog.FileName;
+                try
+                {
+                    await BookManager.ExportBooksToCSV(selectedFile, User);
+                    ExportResult = $"Successful export!";
+
+                }
+                catch
+                {
+                    ExportResult = $"Something went wrong.";
+                }
+            }
         }
 
         [RelayCommand(CanExecute = nameof(CanSaveChanges))]
