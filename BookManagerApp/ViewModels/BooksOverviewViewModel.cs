@@ -104,7 +104,7 @@ namespace BookManagerApp.ViewModels
                 string selectedFile = fileDialog.FileName;
                 try
                 {
-                    await BookManager.ImportBooksFromCSV(selectedFile, User);
+                    await CsvManager.ImportBooksFromCSV(selectedFile, User);
                     LoadBooks(User.Books);
                     ImportResult = $"Successful import!";
                     
@@ -129,7 +129,7 @@ namespace BookManagerApp.ViewModels
                 string selectedFile = fileDialog.FileName;
                 try
                 {
-                    await BookManager.ExportBooksToCSV(selectedFile, User);
+                    await CsvManager.ExportBooksToCSV(selectedFile, User);
                     ExportResult = $"Successful export!";
 
                 }
