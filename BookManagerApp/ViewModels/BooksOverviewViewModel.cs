@@ -78,6 +78,15 @@ namespace BookManagerApp.ViewModels
         }
 
         [RelayCommand]
+        private void LogOut(object obj)
+        {
+            var loginWindow = new Login();
+            var booksWindow = obj as BooksOverview;
+            loginWindow.Show();
+            booksWindow.Close();
+        }
+
+        [RelayCommand]
         private async Task DeleteBook(Book book)
         {
             await BookManager.DeleteBook(book);

@@ -89,6 +89,7 @@
                 <RowDefinition Height="6*"/>
                 <RowDefinition Height="0.1*"/>
                 <RowDefinition Height="5*"/>
+                <RowDefinition Height="5*"/>
             </Grid.RowDefinitions>
             <Label Grid.Column="0" Grid.Row="0" Foreground="#FF232323" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="11">Import books from CSV:</Label>
             <Button Command="{Binding ImportCommand}" Background="#FFFCB969" Grid.Column="0" Grid.Row="1" Padding="4" Content="Load CSV file" HorizontalAlignment="Center" Margin="0 0 0 0" VerticalAlignment="Center" Width="140" FontFamily="Segoe UI Variable Small Semilight" Cursor="Hand" BorderBrush="{x:Null}"/>
@@ -102,6 +103,14 @@
             <Button Command="{Binding OpenGraphCommand}" CommandParameter="{x:Reference Name=BookOverviewWindow}" Background="#FFFCB969" Grid.Column="0" Grid.Row="9" Padding="4" Content="Open graph view" HorizontalAlignment="Center" Margin="0 0 0 0" VerticalAlignment="Center" Width="140" FontFamily="Segoe UI Variable Small Semilight" Cursor="Hand" BorderBrush="{x:Null}"/>
             <Rectangle Grid.Column="0" Grid.Row="10" Fill="#FFF0B978" HorizontalAlignment="Stretch"/>
             <Button Command="{Binding OpenHelpCommand}" CommandParameter="{x:Reference Name=BookOverviewWindow}" Grid.Column="0" Grid.Row="11" Padding="4" Content="Help" HorizontalAlignment="Center" Margin="4" VerticalAlignment="Center" Width="140" FontFamily="Segoe UI Variable Small Semilight" Cursor="Hand" BorderBrush="{x:Null}">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="-1,0" StartPoint="1,0">
+                        <GradientStop Color="#FFFC00FF" Offset="0"/>
+                        <GradientStop Color="#FFFFAF41" Offset="0.6"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Button Command="{Binding LogOutCommand}" CommandParameter="{x:Reference Name=BookOverviewWindow}" Grid.Column="0" Grid.Row="12" Padding="4" Content="Log out" HorizontalAlignment="Center" Margin="4" VerticalAlignment="Center" Width="140" FontFamily="Segoe UI Variable Small Semilight" Cursor="Hand" BorderBrush="{x:Null}">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="-1,0" StartPoint="1,0">
                         <GradientStop Color="#FFFC00FF" Offset="0"/>
