@@ -1,22 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Documents;
 using BookManagerApp.DataAccessLayer;
 using BookManagerApp.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using BookManagerApp.Models;
-using Microsoft.EntityFrameworkCore;
-using System.Text.RegularExpressions;
-using Microsoft.IdentityModel.Tokens;
 using Microsoft.Win32;
 using System.IO;
-using System.Diagnostics;
+using BookManagerApp.Csv;
 
 namespace BookManagerApp.ViewModels
 {

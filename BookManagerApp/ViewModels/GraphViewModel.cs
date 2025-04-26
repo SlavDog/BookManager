@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OxyPlot;
+﻿using OxyPlot;
 using OxyPlot.Series;
 using BookManagerApp.DataAccessLayer;
 using OxyPlot.Axes;
-using static System.Reflection.Metadata.BlobBuilder;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 

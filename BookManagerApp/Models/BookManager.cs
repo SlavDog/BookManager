@@ -1,20 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Shapes;
 using BookManagerApp.DataAccessLayer;
-using BookManagerApp.Views;
-using CsvHelper.Configuration;
-using CsvHelper;
 using Microsoft.EntityFrameworkCore;
-using static System.Reflection.Metadata.BlobBuilder;
 
 namespace BookManagerApp.Models
 {

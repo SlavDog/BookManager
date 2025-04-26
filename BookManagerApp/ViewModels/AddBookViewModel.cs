@@ -1,16 +1,6 @@
 ﻿using BookManagerApp.DataAccessLayer;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.Input;
-using BookManagerApp.Views;
 using BookManagerApp.Models;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using System.Windows.Controls;
 using CommunityToolkit.Mvvm.ComponentModel;
 using System.Diagnostics;
 

@@ -1,7 +1,4 @@
 ﻿using BookManagerApp.DataAccessLayer;
-using Microsoft.EntityFrameworkCore;
-using System.Configuration;
-using System.Data;
 using System.Windows;
 
 namespace BookManagerApp;

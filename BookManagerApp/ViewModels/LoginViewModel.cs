@@ -1,10 +1,7 @@
-﻿using BookManagerApp.DataAccessLayer;
-using BookManagerApp.Models;
+﻿using BookManagerApp.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System.Collections.ObjectModel;
 using BookManagerApp.Views;
-using System.Windows;
 
 namespace BookManagerApp.ViewModels
 {
