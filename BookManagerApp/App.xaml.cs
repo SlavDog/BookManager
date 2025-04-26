@@ -11,16 +11,14 @@ public partial class App : Application
     public App()
     {
         // Preheat the database
-        PreheatAsync();
+        // so the first login doesn't take so long
+        PreheatDb();
     }
 
-    public async Task PreheatAsync()
+    public void PreheatDb()
     {
-        var db = new AppDbContext();
-        await Task.Run(() =>
-        {
-            var users = db.Users.Take(10).ToList();
-        });
+        using var db = new AppDbContext();
+        var users = db.Users.Take(10).ToList();
     }
 }
 
