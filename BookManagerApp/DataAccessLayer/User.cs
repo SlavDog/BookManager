@@ -12,11 +12,11 @@ namespace BookManagerApp.DataAccessLayer
             Salt = salt;
         }
         [Key]
-        public string Username { get; set; }
+        public string? Username { get; set; }
         [Required]
-        public string PasswordHash { get; set; }
+        public string? PasswordHash { get; set; }
         [Required]
-        public string Salt { get; set; }
+        public string? Salt { get; set; }
         public ICollection<Book>? Books { get; set; }
     }
 }

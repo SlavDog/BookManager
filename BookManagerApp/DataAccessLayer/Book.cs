@@ -21,16 +21,16 @@ namespace BookManagerApp.DataAccessLayer
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Required]
-        public string Author { get; set; }
-        public string Title { get; set; }
+        public string? Author { get; set; }
+        public string? Title { get; set; }
         public int? MyRating { get; set; }
         public DateTime? FinishDate { get; set; }
         [Required]
-        public string Bookshelf { get; set; }
+        public string? Bookshelf { get; set; }
         public string? Genre { get; set; }
         [ForeignKey(nameof(User))]
-        public string Username { get; set; }
+        public string? Username { get; set; }
         [Required]
-        public User User { get; set; } 
+        public User? User { get; set; } 
     }
 }

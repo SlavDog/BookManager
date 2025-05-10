@@ -8,6 +8,7 @@ using BookManagerApp.Models;
 using Microsoft.Win32;
 using System.IO;
 using BookManagerApp.Csv;
+using System.Diagnostics;
 
 namespace BookManagerApp.ViewModels
 {
@@ -43,6 +44,7 @@ namespace BookManagerApp.ViewModels
 
         public async Task ReloadUser()
         {
+            Debug.Assert(User != null && User.Username != null);
             User = await UserService.GetUser(User.Username);
             LoadBooks(User.Books);
         }
@@ -53,6 +55,7 @@ namespace BookManagerApp.ViewModels
             var addBookWindow = new AddBook(User, this);
             var booksWindow = obj as BooksOverview;
             addBookWindow.Owner = booksWindow;
+            Debug.Assert(booksWindow != null);
             booksWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             addBookWindow.Show();
         }
@@ -63,6 +66,7 @@ namespace BookManagerApp.ViewModels
             var helpWindow = new Help();
             var booksWindow = obj as BooksOverview;
             helpWindow.Owner = booksWindow;
+            Debug.Assert(booksWindow != null);
             booksWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             helpWindow.Show();
         }
@@ -73,6 +77,7 @@ namespace BookManagerApp.ViewModels
             var graphWindow = new Graph(Books);
             var booksWindow = obj as BooksOverview;
             graphWindow.Owner = booksWindow;
+            Debug.Assert(booksWindow != null);
             booksWindow.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             graphWindow.Show();
         }
@@ -82,6 +87,7 @@ namespace BookManagerApp.ViewModels
         {
             var loginWindow = new Login();
             var booksWindow = obj as BooksOverview;
+            Debug.Assert(booksWindow != null);
             loginWindow.Show();
             booksWindow.Close();
         }

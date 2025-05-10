@@ -18,9 +18,9 @@ namespace BookManagerApp.Converters
             return null;
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        public object? ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            string str = value as string;
+            string? str = value as string ?? null;
 
             if (string.IsNullOrWhiteSpace(str))
                 return null;

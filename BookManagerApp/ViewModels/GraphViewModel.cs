@@ -10,7 +10,7 @@ namespace BookManagerApp.ViewModels
     public partial class GraphViewModel : ObservableObject
     {
         [ObservableProperty]
-        private PlotModel plotModel;
+        private PlotModel? plotModel;
         
         [ObservableProperty]
         [NotifyCanExecuteChangedFor(nameof(CreateMonthCommand))]
@@ -60,6 +60,7 @@ namespace BookManagerApp.ViewModels
             {
                 TextToShow = "";
             }
+
             PlotModel = new PlotModel { Title = "Yearly Statistics" };
             var barSeries = new BarSeries
             {

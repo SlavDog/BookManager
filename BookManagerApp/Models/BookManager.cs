@@ -63,7 +63,7 @@ namespace BookManagerApp.Models
                 && !finishMatch.Success && !bookshelfMatch.Success && !genreMatch.Success))
             {
                 newBooks = (user.Books ?? Enumerable.Empty<Book>())
-                    .Where(b => b.Title.Contains(value));
+                    .Where(b => (b.Title ?? "").Contains(value));
                 return newBooks;
             }
 
@@ -81,10 +81,10 @@ namespace BookManagerApp.Models
             bool finishCorrect = DateTime.TryParse(finishFilter, out date);
 
             newBooks = (user.Books ?? Enumerable.Empty<Book>())
-                .Where(b => b.Title.Contains(titleFilter) && b.Author.Contains(authorFilter)
+                .Where(b => (b.Title ?? "").Contains(titleFilter) && (b.Author ?? "").Contains(authorFilter)
                             && (ratingCorrect ? (b.MyRating == rating) : ratingFilter == "")
                             && (finishCorrect ? (b.FinishDate == date) : finishFilter == "")
-                            && (b.Bookshelf.Contains(bookshelfFilter))
+                            && ((b.Bookshelf ?? "").Contains(bookshelfFilter))
                             && (b.Genre == null ? false : b.Genre.Contains(genreFilter)));
             return newBooks;
         }

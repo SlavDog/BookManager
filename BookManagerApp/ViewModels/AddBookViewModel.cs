@@ -40,7 +40,7 @@ namespace BookManagerApp.ViewModels
         [RelayCommand(CanExecute = nameof(CanAddBook))]
         public async Task AddBook()
         {
-            Debug.Assert(Author != null && Title != null && Bookshelf != null && user != null);
+            Debug.Assert(Author != null && Title != null && Bookshelf != null && user != null && user.Username != null);
             bool success = await BookManager.AddNewBook(new Book(Author, Title, Bookshelf, user.Username, Rating, FinishDate, Genre), user);
             if (success)
             {

@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography;
+﻿using System.Diagnostics;
+using System.Security.Cryptography;
 using System.Text;
 using BookManagerApp.DataAccessLayer;
 using Microsoft.EntityFrameworkCore;
@@ -33,6 +34,7 @@ namespace BookManagerApp.Models
             var user = await context.Users
                 .Include(u => u.Books)
                 .FirstOrDefaultAsync(u => u.Username == username);
+            Debug.Assert(user != null, "User not found");
             return user;
         }
 
@@ -46,7 +48,7 @@ namespace BookManagerApp.Models
             using var context = new AppDbContext();
             var user = await context.Users
                 .FirstOrDefaultAsync(u => u.Username == username);
-            return (user != null && user.PasswordHash == HashPassword(password, user.Salt));
+            return (user != null && user.Salt != null && user.PasswordHash == HashPassword(password, user.Salt));
         }
 
         public static string GenerateSalt(int size = 16)
