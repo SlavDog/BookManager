@@ -27,3 +27,5 @@ The application supports CSV import and export. The import supports CSV file for
 *Title, Author, My Rating, Date Read, Exclusive Shelf, Genre*
 
 The application ignores the rest of the columns.
+
+If there is a book with the same name and author belonging to current user, the application will not import it again.
