@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using BookManagerApp.Views;
+using System.Diagnostics;
 
 namespace BookManagerApp.ViewModels
 {
@@ -42,10 +43,12 @@ namespace BookManagerApp.ViewModels
             InfoText = success ? "Correct! Welcome master!" : "Wrong! You shall not pass!";
             if (success)
             {
+                Debug.Assert(Username != null);
                 var user = await UserService.GetUser(Username);
                 booksOverviewWindow = new BooksOverview(user);
                 var loginWindow = obj as Login;
                 booksOverviewWindow.Show();
+                Debug.Assert(loginWindow != null);
                 loginWindow.Close();
             }
         }

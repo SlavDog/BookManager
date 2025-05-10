@@ -4,6 +4,7 @@ using CsvHelper;
 using System.Globalization;
 using System.IO;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 
 namespace BookManagerApp.Csv
 {
@@ -39,6 +40,7 @@ namespace BookManagerApp.Csv
                             {
                                 continue;
                             }
+                            Debug.Assert(user.Username != null);
                             var book = new Book(record.Author ?? $"Author{counter}",
                                                     record.Title ?? $"Book{counter++}",
                                                     convertGoodReadsBookshelf(record.Bookshelf ?? "to-read"),
@@ -46,6 +48,7 @@ namespace BookManagerApp.Csv
                                                     record.MyRating,
                                                     record.FinishDate,
                                                     record.Genre ?? "Unknown");
+                            Debug.Assert(user.Books != null);
                             user.Books.Add(book);
                             context.Add(book);
                         }
@@ -72,6 +75,7 @@ namespace BookManagerApp.Csv
                         Quote = '"'
                     }))
                     {
+                        Debug.Assert(user.Books != null);
                         var infoToExport = user.Books
                             .Select(b => new BookExportDTO {
                                 Title = b.Title,
