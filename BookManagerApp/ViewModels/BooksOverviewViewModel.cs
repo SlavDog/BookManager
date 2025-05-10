@@ -96,7 +96,7 @@ namespace BookManagerApp.ViewModels
         private async Task DeleteBook(Book book)
         {
             await BookManager.DeleteBook(book);
-            LoadBooks(User.Books);
+            await ReloadUser();
         }
 
         [RelayCommand]
