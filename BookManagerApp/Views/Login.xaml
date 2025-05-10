@@ -13,7 +13,8 @@
                 <GradientStop Color="#FFDAB3DC" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="24" FontFamily="Segoe UI Semibold" Cursor="" RenderTransformOrigin="0.5,0.5" Foreground="#19FE876D">
+        <!--Background emojis-->
+        <TextBlock Text="{Binding EmojiSpam}" HorizontalAlignment="Center" Width="1000" Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="24" FontFamily="Segoe UI Semibold" Cursor="" RenderTransformOrigin="0.5,0.5" Foreground="#19FE876D">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="2" ScaleY="2"/>
@@ -22,33 +23,39 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </TextBlock.RenderTransform>
-            📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖
-            📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖
-            📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖
-            📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖
-            📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖
-            📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖
-            📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖📕📖
         </TextBlock>
-        <Label Content="-- Book Manager --" HorizontalAlignment="Center" Margin="0,0,0,138" VerticalAlignment="Center" Foreground="#FF232323" FontSize="24" FontFamily="Segoe UI Semibold" Cursor=""/>
-        <TextBox Text="{Binding Username}" Padding="4" HorizontalAlignment="Center" TextWrapping="NoWrap" VerticalAlignment="Center" Width="120" Background="#FFF0F0F0" Foreground="#FF232323" Height="25" Cursor="IBeam" Margin="0,0,0,60" BorderBrush="#FFFFAF41"/>
-        <PasswordBox x:Name="PasswordBox" PasswordChanged="PasswordBox_PasswordChanged" Padding="4" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" Background="#FFF0F0F0" Foreground="#FF232323" Height="25" Cursor="IBeam" BorderBrush="#FFFFAF41"/>
-        <Button Command="{Binding LoginCommand}" CommandParameter="{x:Reference Name=LoginWindow}" Padding="4" Content="Login" HorizontalAlignment="Center" Margin="0,80,0,0" VerticalAlignment="Center" Width="120" FontFamily="Segoe UI Variable Small Semilight" Cursor="Hand" BorderBrush="{x:Null}">
-            <Button.Background>
-                <LinearGradientBrush EndPoint="-1,0" StartPoint="1,0">
-                    <GradientStop Color="#FFFC00FF" Offset="0"/>
-                    <GradientStop Color="#FFFFAF41" Offset="0.6"/>
-                </LinearGradientBrush>
-            </Button.Background>
-        </Button>
-        <Button Command="{Binding RegisterCommand}" Padding="4" Content="Register" HorizontalAlignment="Center" Margin="0,150,0,0" VerticalAlignment="Center" Width="120" FontFamily="Segoe UI Variable Small Semilight" Cursor="Hand" BorderBrush="{x:Null}">
-            <Button.Background>
-                <LinearGradientBrush EndPoint="-1,0" StartPoint="1,0">
-                    <GradientStop Color="#FFFC00FF" Offset="0"/>
-                    <GradientStop Color="#FFFFAF41" Offset="0.6"/>
-                </LinearGradientBrush>
-            </Button.Background>
-        </Button>
-        <Label Content="{Binding InfoText}" HorizontalAlignment="Center" Margin="0,230,0,0" VerticalAlignment="Center" Foreground="#FF232323"/>
+        <Grid Width="300" Height="300">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="0.75*"/>
+                <RowDefinition Height="0.75*"/>
+                <RowDefinition Height="0.75*"/>
+                <RowDefinition Height="0.75*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Content="-- Book Manager --" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF232323" FontSize="24" FontFamily="Segoe UI Semibold" Cursor=""/>
+            <TextBox Grid.Row="1" Text="{Binding Username}" Padding="4" HorizontalAlignment="Center" TextWrapping="NoWrap" VerticalAlignment="Center" Width="120" Background="#FFF0F0F0" Foreground="#FF232323" Height="25" Cursor="IBeam" BorderBrush="#FFFFAF41"/>
+            <PasswordBox Grid.Row="2" x:Name="PasswordBox" PasswordChanged="PasswordBox_PasswordChanged" Padding="4" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" Background="#FFF0F0F0" Foreground="#FF232323" Height="25" Cursor="IBeam" BorderBrush="#FFFFAF41"/>
+            <Button Grid.Row="3" Command="{Binding LoginCommand}" CommandParameter="{x:Reference Name=LoginWindow}" Padding="4" Content="Login" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" FontFamily="Segoe UI Variable Small Semilight" Cursor="Hand" BorderBrush="{x:Null}">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="-1,0" StartPoint="1,0">
+                        <GradientStop Color="#FFFC00FF" Offset="0"/>
+                        <GradientStop Color="#FFFFAF41" Offset="0.6"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Button Grid.Row="4" Command="{Binding RegisterCommand}" Padding="4" Content="Register" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" FontFamily="Segoe UI Variable Small Semilight" Cursor="Hand" BorderBrush="{x:Null}">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="-1,0" StartPoint="1,0">
+                        <GradientStop Color="#FFFC00FF" Offset="0"/>
+                        <GradientStop Color="#FFFFAF41" Offset="0.6"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Label Grid.Row="5" Content="{Binding InfoText}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF232323"/>
+        </Grid>
     </Grid>
 </Window>

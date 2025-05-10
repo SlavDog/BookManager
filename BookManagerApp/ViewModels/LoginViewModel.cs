@@ -49,5 +49,8 @@ namespace BookManagerApp.ViewModels
                 loginWindow.Close();
             }
         }
+
+        // Background generator
+        public string EmojiSpam => string.Concat(Enumerable.Repeat("📕📖", 414));
     }
 }
