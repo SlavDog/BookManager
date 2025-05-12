@@ -1,5 +1,5 @@
 ﻿
-namespace BookManagerApp.Models
+namespace BookManagerApp.Managers
 {
     public static class ComboBoxValues
     {

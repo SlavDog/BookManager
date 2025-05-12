@@ -1,4 +1,4 @@
-﻿using BookManagerApp.Models;
+﻿using BookManagerApp.Managers;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookManagerApp.DataAccessLayer
@@ -25,10 +25,10 @@ namespace BookManagerApp.DataAccessLayer
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            var salt = UserService.GenerateSalt();
+            var salt = UserManager.GenerateSalt();
             modelBuilder.Entity<User>().HasData
                 (
-                    new User { Username = "karel", PasswordHash = UserService.HashPassword("heslo", salt), Salt = salt }
+                    new User { Username = "karel", PasswordHash = UserManager.HashPassword("heslo", salt), Salt = salt }
                 );
             modelBuilder.Entity<Book>().HasData
                 (

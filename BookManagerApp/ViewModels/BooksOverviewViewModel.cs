@@ -4,7 +4,7 @@ using BookManagerApp.DataAccessLayer;
 using BookManagerApp.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using BookManagerApp.Models;
+using BookManagerApp.Managers;
 using Microsoft.Win32;
 using System.IO;
 using BookManagerApp.Csv;
@@ -45,7 +45,7 @@ namespace BookManagerApp.ViewModels
         public async Task ReloadUser()
         {
             Debug.Assert(User != null && User.Username != null);
-            User = await UserService.GetUser(User.Username);
+            User = await UserManager.GetUser(User.Username);
             LoadBooks(User.Books);
         }
 

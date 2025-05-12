@@ -1,6 +1,6 @@
 ﻿using BookManagerApp.DataAccessLayer;
 using CommunityToolkit.Mvvm.Input;
-using BookManagerApp.Models;
+using BookManagerApp.Managers;
 using CommunityToolkit.Mvvm.ComponentModel;
 using System.Diagnostics;
 

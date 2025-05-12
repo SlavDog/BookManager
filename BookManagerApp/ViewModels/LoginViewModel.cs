@@ -1,4 +1,4 @@
-﻿using BookManagerApp.Models;
+﻿using BookManagerApp.Managers;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using BookManagerApp.Views;
@@ -21,7 +21,7 @@ namespace BookManagerApp.ViewModels
         [RelayCommand]
         private async Task Register(object obj)
         {
-            int result = await UserService.AddUser(Username, Password);
+            int result = await UserManager.AddUser(Username, Password);
             switch (result)
             {
                 case 0:
@@ -39,12 +39,12 @@ namespace BookManagerApp.ViewModels
         [RelayCommand]
         private async Task Login(object obj)
         {
-            bool success = await UserService.CheckCredentialsUser(Username, Password);
+            bool success = await UserManager.CheckCredentialsUser(Username, Password);
             InfoText = success ? "Correct! Welcome master!" : "Wrong! You shall not pass!";
             if (success)
             {
                 Debug.Assert(Username != null);
-                var user = await UserService.GetUser(Username);
+                var user = await UserManager.GetUser(Username);
                 booksOverviewWindow = new BooksOverview(user);
                 var loginWindow = obj as Login;
                 booksOverviewWindow.Show();

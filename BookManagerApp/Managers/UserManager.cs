@@ -4,9 +4,9 @@ using System.Text;
 using BookManagerApp.DataAccessLayer;
 using Microsoft.EntityFrameworkCore;
 
-namespace BookManagerApp.Models
+namespace BookManagerApp.Managers
 {
-    class UserService
+    class UserManager
     {
         public static async Task<int> AddUser(string? username, string? password)
         {

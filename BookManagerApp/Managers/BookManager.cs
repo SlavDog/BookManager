@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 using BookManagerApp.DataAccessLayer;
 using Microsoft.EntityFrameworkCore;
 
-namespace BookManagerApp.Models
+namespace BookManagerApp.Managers
 {
     public class BookManager
     {

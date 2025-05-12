@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BookManagerApp.Views"
         xmlns:converters="clr-namespace:BookManagerApp.Converters"
-        xmlns:models="clr-namespace:BookManagerApp.Models"
+        xmlns:models="clr-namespace:BookManagerApp.Managers"
         mc:Ignorable="d"
         Title="BooksOverview" Height="450" Width="800" Name="BookOverviewWindow">
 
