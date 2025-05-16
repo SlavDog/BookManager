@@ -1,3 +1,7 @@
+## Requirements
+- .NET 9.0
+- SQL Server Express LocalDB
+
 ## Help section
 
 ### Filtering
