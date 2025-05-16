@@ -122,7 +122,6 @@ namespace BookManagerApp.ViewModels
                     await CsvManager.ImportBooksFromCSV(selectedFile, User);
                     LoadBooks(User.Books);
                     ImportResult = $"Successful import!";
-                    
                 }
                 catch
                 {

@@ -8,6 +8,7 @@ namespace BookManagerApp.Csv
 {
     public class BookExportDTO
     {
+        // This class is used to represent the data structure of a book for export to CSV.
         public string? Title { get; set; }
         public string? Author { get; set; }
         public int? MyRating { get; set; }

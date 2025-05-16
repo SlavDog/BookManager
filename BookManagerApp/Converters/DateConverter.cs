@@ -5,6 +5,7 @@ namespace BookManagerApp.Converters
 {
     public class DateConverter : IValueConverter
     {
+        // Converts between DateTime and string representations when user interacts with the date cells in the DataGrid.
         public object? Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value == null) {

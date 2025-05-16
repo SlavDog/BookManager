@@ -5,6 +5,7 @@ namespace BookManagerApp.Converters
 {
     public class RatingConverter : IValueConverter
     {
+        // Converts between int and string representations when user interacts with the rating cells in the DataGrid.
         public object? Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value == null)
