@@ -18,6 +18,7 @@ public partial class App : Application
     public void PreheatDb()
     {
         using var db = new AppDbContext();
+        db.EnsureCreated();
         var users = db.Users.Take(10).ToList();
     }
 }

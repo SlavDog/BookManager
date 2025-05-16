@@ -11,9 +11,8 @@ namespace BookManagerApp.DataAccessLayer
         public DbSet<User> Users { get; set; }
         public DbSet<Book> Books { get; set; }
 
-        public AppDbContext()
+        public void EnsureCreated()
         {
-            //Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 
@@ -28,7 +27,11 @@ namespace BookManagerApp.DataAccessLayer
             var salt = UserManager.GenerateSalt();
             modelBuilder.Entity<User>().HasData
                 (
-                    new User { Username = "karel", PasswordHash = UserManager.HashPassword("heslo", salt), Salt = salt }
+                    new User {
+                        Username = "karel",
+                        PasswordHash = UserManager.HashPassword("heslo", salt),
+                        Salt = salt
+                    }
                 );
             modelBuilder.Entity<Book>().HasData
                 (
